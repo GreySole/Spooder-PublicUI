@@ -10,6 +10,17 @@ export default function App() {
   const [displayName, setDisplayName] = useState<string>();
 
   useEffect(() => {
+    function clearCookies() {
+      const cookies = document.cookie.split(";");
+
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i];
+        const eqPos = cookie.indexOf("=");
+        const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/`;
+      }
+    }
+    clearCookies();
     validateToken(accessToken).then((data) => {
       if (data.status === "ok") {
         window.history.replaceState(
@@ -17,21 +28,18 @@ export default function App() {
           "",
           window.location.pathname + window.location.search
         );
-        console.log(data.data.data);
         setViewerId(data.data.data[0]?.id);
         setDisplayName(data.data.data[0]?.display_name);
       } else {
-        setViewerId("");
-        setDisplayName("");
+        setViewerId("-1");
+        setDisplayName("Anonymous");
       }
     });
-  }, []);
+  }, [accessToken]);
 
   if (!viewerId || !displayName) {
     return null;
   }
-
-  console.log("Access Token:", accessToken);
 
   return (
     <AppContextProvider userId={viewerId} displayName={displayName}>
