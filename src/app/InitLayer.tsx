@@ -1,8 +1,10 @@
 import {
   KeyedObject,
   SpooderPet,
+  SpooderPetPair,
   ThemeProvider,
   ThemeVariables,
+  TooltipProvider,
 } from "@greysole/spooder-component-library";
 import React from "react";
 import { useEffect, useState } from "react";
@@ -12,9 +14,10 @@ import { BroadcasterContextProvider } from "../context/BroadcasterContextProvide
 
 export default function InitLayer() {
   const [theme, setTheme] = useState<ThemeVariables | undefined>();
-  const [spooder, setSpooder] = useState<SpooderPet | undefined>();
+  const [spooder, setSpooder] = useState<SpooderPetPair[] | undefined>();
   const [botName, setBotName] = useState<string | undefined>();
   const [homeChannel, setHomeChannel] = useState<string | undefined>();
+  const [clientId, setClientId] = useState<string | undefined>();
   const [homePlatform, setHomePlatform] = useState<string | undefined>();
   const [plugins, setPlugins] = useState<KeyedObject | undefined>();
 
@@ -27,13 +30,14 @@ export default function InitLayer() {
         ? (response.theme as ThemeVariables)
         : ({ hue: 0.5, saturation: 1.0, isDarkTheme: true } as ThemeVariables);
       console.log("Theme data:", themeData);
-      const spooderData = response.spooderpet as SpooderPet;
+      const spooderData = response.spooderpet as SpooderPetPair[];
       console.log("Spooder data:", spooderData);
       setTheme(themeData);
       setSpooder(spooderData);
       setBotName(response.botName);
       setHomeChannel(response.homeChannel);
       setHomePlatform("twitch");
+      setClientId(response.clientId);
       setPlugins(response.plugins);
       document.title = `${response.botName}@${response.homeChannel}`;
     });
@@ -47,14 +51,17 @@ export default function InitLayer() {
 
   return (
     <ThemeProvider theme={theme} spooder={spooder}>
-      <BroadcasterContextProvider
-        botName={botName}
-        homeChannel={homeChannel}
-        homePlatform={homePlatform}
-        plugins={plugins ?? {}}
-      >
-        <App />
-      </BroadcasterContextProvider>
+      <TooltipProvider>
+        <BroadcasterContextProvider
+          botName={botName}
+          homeChannel={homeChannel}
+          homePlatform={homePlatform}
+          clientId={clientId ?? ""}
+          plugins={plugins ?? {}}
+        >
+          <App />
+        </BroadcasterContextProvider>
+      </TooltipProvider>
     </ThemeProvider>
   );
 }

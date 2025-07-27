@@ -1,6 +1,6 @@
 {
   "name": "spooder-publicui",
-  "version": "0.1.0",
+  "version": "0.5.0",
   "private": true,
   "dependencies": {
     "@greysole/spooder-component-library": "^0.1.108",
@@ -23,7 +23,7 @@
   "overrides": {
     "typescript": "^5.8.3"
   },
-  "proxy": "http://127.0.0.1:3000",
+  "proxy": "http://localhost:3000",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

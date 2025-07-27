@@ -1,9 +1,8 @@
 export function getPublicData() {
-  return fetch("/public/data")
-    .then((res) => res.json());
+  return fetch("/public/data").then((res) => res.json());
 }
 
-export function validateToken(token: string|null) {
+export function validateToken(token: string | null) {
   return fetch("/twitch/viewer/validate", {
     method: "POST",
     headers: {

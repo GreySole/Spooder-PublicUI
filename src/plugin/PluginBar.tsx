@@ -11,7 +11,7 @@ import { useAppContext } from "../context/AppContextProvider";
 
 export default function PluginBar() {
   const { userId } = useAppContext();
-  const { plugins } = useBroadcasterContext();
+  const { plugins, clientId } = useBroadcasterContext();
   const { isMobileDevice } = useTheme();
 
   const mockPlugins = {
@@ -43,7 +43,7 @@ export default function PluginBar() {
               label="Login to Twitch for Plugins"
               onClick={() => {
                 const twitchAuthURL = new URL(
-                  `https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=24iyn648q3tkx09lqzyal5224qbyre&redirect_uri=${document.location.origin}&scope=`
+                  `https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=${clientId}&redirect_uri=${document.location.origin}&scope=`
                 );
                 window.open(twitchAuthURL.toString(), "_self");
               }}

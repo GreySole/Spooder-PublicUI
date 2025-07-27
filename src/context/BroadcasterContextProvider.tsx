@@ -6,6 +6,7 @@ interface BroadcasterContextType {
   botName: string;
   homeChannel: string;
   homePlatform: string;
+  clientId: string;
   plugins: KeyedObject;
 }
 
@@ -18,6 +19,7 @@ interface BroadcasterContextProviderProps {
   botName: string;
   homeChannel: string;
   homePlatform: string;
+  clientId: string;
   plugins: KeyedObject;
   children: ReactNode;
 }
@@ -26,11 +28,12 @@ interface BroadcasterContextProviderProps {
 export function BroadcasterContextProvider(
   props: BroadcasterContextProviderProps
 ) {
-  const { botName, homeChannel, homePlatform, plugins, children } = props;
+  const { botName, homeChannel, homePlatform, clientId, plugins, children } =
+    props;
 
   return (
     <BroadcasterContext.Provider
-      value={{ botName, homeChannel, homePlatform, plugins }}
+      value={{ botName, homeChannel, homePlatform, clientId, plugins }}
     >
       {children}
     </BroadcasterContext.Provider>
