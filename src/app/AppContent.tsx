@@ -1,4 +1,4 @@
-import { Box, useTheme } from "@greysole/spooder-component-library";
+import { Box, useTheme } from "@spooder/webui-component-library";
 import React from "react";
 import StreamChat from "../embed/StreamChat";
 import VideoEmbed from "../embed/VideoEmbed";

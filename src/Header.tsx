@@ -5,7 +5,7 @@ import {
   CustomSpooder,
   TypeFace,
   useTheme,
-} from "@greysole/spooder-component-library";
+} from "@spooder/webui-component-library";
 import { useAppContext } from "./context/AppContextProvider";
 
 export default function Header() {

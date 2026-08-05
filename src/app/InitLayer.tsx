@@ -5,7 +5,7 @@ import {
   ThemeProvider,
   ThemeVariables,
   TooltipProvider,
-} from "@greysole/spooder-component-library";
+} from "@spooder/webui-component-library";
 import React from "react";
 import { useEffect, useState } from "react";
 import { getPublicData } from "../Requests";

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button } from "@greysole/spooder-component-library";
+import { Box, Button } from "@spooder/webui-component-library";
 import { faPlug } from "@fortawesome/free-solid-svg-icons";
 
 interface PluginButtonProps {

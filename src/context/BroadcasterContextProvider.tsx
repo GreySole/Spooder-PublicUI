@@ -1,4 +1,4 @@
-import { KeyedObject } from "@greysole/spooder-component-library";
+import { KeyedObject } from "@spooder/webui-component-library";
 import React, { createContext, ReactNode, useContext } from "react";
 
 // Define the shape of the context

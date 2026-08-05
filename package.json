@@ -3,10 +3,7 @@
   "version": "0.5.0",
   "private": true,
   "dependencies": {
-    "@greysole/spooder-component-library": "^0.1.108",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
+    "@spooder/webui-component-library": "^0.2.0",
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
@@ -15,26 +12,13 @@
     "react-draggable": "^4.4.5",
     "react-modal-resizable-draggable": "^0.1.6",
     "react-resizable": "^3.0.5",
-    "react-scripts": "5.0.1",
-    "react-twitch-embed": "^3.0.1",
-    "typescript": "^5.8.3",
-    "web-vitals": "^2.1.4"
+    "react-twitch-embed": "^3.0.1"
   },
-  "overrides": {
-    "typescript": "^5.8.3"
-  },
-  "proxy": "http://localhost:3000",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "start": "vite --host",
+    "build": "tsc --noEmit && vite build",
+    "build-front": "npm run build && node scripts/replace-build.js",
+    "preview": "vite preview --port 3001"
   },
   "browserslist": {
     "production": [
@@ -51,6 +35,9 @@
   "devDependencies": {
     "@types/node": "^22.14.0",
     "@types/react": "^18.1.0",
-    "@types/react-dom": "^18.1.1"
+    "@types/react-dom": "^18.1.1",
+    "@vitejs/plugin-react": "^6.0.3",
+    "typescript": "^5.6.2",
+    "vite": "^8.1.4"
   }
 }

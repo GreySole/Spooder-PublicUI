@@ -4,7 +4,7 @@ import {
   Box,
   Button,
   useTheme,
-} from "@greysole/spooder-component-library";
+} from "@spooder/webui-component-library";
 import { useBroadcasterContext } from "../context/BroadcasterContextProvider";
 import PluginButton from "./PluginButton";
 import { useAppContext } from "../context/AppContextProvider";
