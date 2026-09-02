@@ -1,6 +1,6 @@
 {
   "name": "spooder-publicui",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "private": true,
   "dependencies": {
     "@spooder/webui-component-library": "^0.2.0",
